@@ -1,0 +1,157 @@
+{
+  "Next Layout": {
+    "prefix": "next-layout",
+    "body": [
+      "",
+      "export default async function Layout({",
+      "  children,",
+      "}: Readonly<{",
+      "  children: React.ReactNode;",
+      "}>) {",
+      "  return <>{children}</>",
+      "};",
+      ""
+    ],
+    "description": "Next Layout"
+  },
+  "Next Page": {
+    "prefix": "next-page",
+    "body": [
+      "",
+      "type PageProps = {",
+      "  params: Promise<{ [key: string]: string | undefined }>;",
+      "  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;",
+      "};",
+      "",
+      "export default async function Page({ params, searchParams }: PageProps) {",
+      "  return (",
+      "    <section>",
+      "      $2",
+      "    </section>",
+      "  )",
+      "};",
+      "",
+      ""
+    ],
+    "description": "Next Page"
+  },
+
+  "Next Component": {
+    "prefix": "next-component",
+    "body": [
+      "import { cn } from '@/lib/utils';",
+      "",
+      "type Props = React.HTMLAttributes<HTMLElement> ",
+      "",
+      "export const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} = ({ className }: Readonly<Props>) => {",
+      "  return (",
+      "    <div className={cn('$2', className)}>",
+      "      $3",
+      "    </div>",
+      "  )",
+      "};",
+      "",
+      ""
+    ],
+    "description": "Next Component"
+  },
+
+  "Create Context": {
+    "prefix": "next-context",
+    "body": [
+      "'use client'",
+      "",
+      "import { createContext, useContext } from 'react';",
+      "",
+      "type ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}ContextType = {}",
+      "const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Context = createContext<${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}ContextType | null>(null);",
+      "",
+      "export const use${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Context = () => {",
+      "  const context = useContext(${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Context);",
+      "  if(!context) {",
+      "    throw new Error('${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Context Error');",
+      "  }",
+      "  return context",
+      "}",
+      "",
+      "export const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}ContextProvider = ({ children }: Readonly<{ children: React.ReactNode }>) => {",
+      "  return <${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Context.Provider value={{}}>{children}</${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}Context.Provider>",
+      "}"
+    ]
+  },
+
+  "Use Client": {
+    "prefix": "use-client",
+    "body": ["'use client'"],
+    "description": "use client"
+  },
+
+  "Use Server": {
+    "prefix": "use-server",
+    "body": ["'use server'"],
+    "description": "use server"
+  },
+
+  "Server Only": {
+    "prefix": "server-only",
+    "body": ["import 'server-only'"],
+    "description": "define server only file"
+  },
+
+  "Server Service": {
+    "prefix": "next-server-service",
+    "body": [
+      "import 'server-only'", //
+      "",
+      "export class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} {}"
+    ],
+    "description": "define server only service"
+  },
+
+  "Route Handler (GET)": {
+    "prefix": "next-route-get",
+    "body": [
+      "import { NextRequest, NextResponse } from 'next/server';",
+      "",
+      "export async function GET(request: NextRequest) {}"
+    ],
+    "description": "define route handler (GET)"
+  },
+
+  "Page Route Segment Config": {
+    "prefix": "next-route-segment",
+    "body": [
+      "// type dynamic = 'auto' | 'force-dynamic' | 'error' | 'force-static'",
+      "export const dynamic = 'auto';",
+      "// type dynamicParams = boolean",
+      "export const dynamicParams = false;",
+      "// type revalidate = false | 0 | number",
+      "export const revalidate = false;",
+      "// type fetchCache = 'auto' | 'default-cache' | 'only-cache' | 'force-cache' | 'force-no-store' | 'default-no-store' | 'only-no-store'",
+      "export const fetchCache = 'auto';",
+      "// type runtime = 'nodejs' | 'edge'",
+      "export const runtime = 'nodejs';",
+      "// type preferredRegion = 'auto' | 'global' | 'home' | string | string[]",
+      "export const preferredRegion = 'auto';"
+    ]
+  },
+
+  "Use Metadata": {
+    "prefix": "next-meta",
+    "body": ["export const metadata: Metadata = {$1}"],
+    "description": "Define Next Metadata"
+  },
+
+  "Use Dynamic Metadata": {
+    "prefix": "next-d-meta",
+    "body": [
+      "export async function generateMetadata(",
+      "  { params, searchParams }: PageProps,",
+      "  parent: ResolvingMetadata,",
+      "): Promise<Metadata> {",
+      "  return $1",
+      "}"
+    ],
+    "description": "Define Dynamic Next Metadata"
+  }
+}
